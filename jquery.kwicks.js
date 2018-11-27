@@ -449,11 +449,11 @@
 		var self = this,
 			opts = self.opts;
 
-		this.addEventHandler(this.$container, 'mouseleave', function() {
+		this.addEventHandler(this.$container, 'mouseleave focusout', function() {
 			self.$container.kwicks('expand', -1, { delay: opts.delayMouseOut });
 		});
 
-		this.addEventHandler(this.$panels, 'mouseenter', function() {
+		this.addEventHandler(this.$panels, 'mouseenter focusin', function() {
 			$(this).kwicks('expand', { delay: opts.delayMouseIn });
 		});
 
@@ -499,9 +499,9 @@
 
 		if (!this.opts.interactive) return;
 
-		this.addEventHandler(this.$container, 'mouseenter', pause);
-		this.addEventHandler(this.$container, 'mouseleave', start);
-		this.addEventHandler(this.$panels, 'mouseenter', function() {
+		this.addEventHandler(this.$container, 'mouseenter focusin', pause);
+		this.addEventHandler(this.$container, 'mouseleave focusout', start);
+		this.addEventHandler(this.$panels, 'mouseenter focusin', function() {
 			curSlide = $(this).kwicks('expand').index();
 		});
 	};
